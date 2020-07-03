@@ -1,0 +1,50 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+        <!--        jdbcConnection: 指定如何连接到目标数据库-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/meeting?allowMultiQueries=true"
+                        userId="root"
+                        password="">
+        </jdbcConnection>
+
+        <!--        根据数据库字段自动转换规则-->
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--       javaModelGenerator：指定javaBean的生成策略
+                    targetProject：目标包名
+                     targetProject：目标工程-->
+        <javaModelGenerator targetPackage="com.zhku.meeting.entities" targetProject=".\src">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--       sqlMapGenerator： sql映射的生成策略-->
+        <sqlMapGenerator targetPackage="com.zhku.meeting.dao"  targetProject=".\src">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--       javaClientGenerator:指定mapper接口所在的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zhku.meeting.mapper"  targetProject=".\src">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--        指定要逆向分析哪些表，根据这些表创建javabean
+                     domainObjectName:指定创建的javabean名
+        -->
+<!--        <table tableName="department" domainObjectName="Department"></table>-->
+<!--        <table tableName="meeting_room" domainObjectName="Room"></table>-->
+<!--        <table tableName="application_record" domainObjectName="ApplicationRecord"></table>-->
+<!--        <table tableName="meeting_record" domainObjectName="MeetingRecord"></table>-->
+<!--        <table tableName="manager" domainObjectName="Manager"></table>-->
+        <table tableName="status" domainObjectName="ShowStatus"></table>
+
+    </context>
+</generatorConfiguration>
